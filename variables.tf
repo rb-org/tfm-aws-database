@@ -23,3 +23,14 @@ variable "default_tags" {
 }
 
 variable "mysql_rds_password" {}
+
+# Log exports
+variable "mysql_log_exports" {
+  description = "Valid values audit, error, general, slowquery"
+  default     = ["error"]
+}
+
+variable "mssql_log_exports" {
+  description = "Valid values  agent, dump, error, trace"
+  default     = ["agent", "error"]
+}

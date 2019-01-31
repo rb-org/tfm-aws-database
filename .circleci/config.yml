@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: hashicorp/terraform:light
     environment: 
-      WKSPC: "default"
+      WKSPC: "x200"
     steps:
       - checkout
       - run:
@@ -37,7 +37,7 @@ jobs:
     docker:
       - image: hashicorp/terraform:light
     environment: 
-      WKSPC: "default"
+      WKSPC: "x200"
     steps:
       - checkout
       - run:
@@ -68,7 +68,7 @@ jobs:
     docker:
       - image: hashicorp/terraform:light
     environment: 
-      WKSPC: "default"
+      WKSPC: "x200"
     steps:
       - checkout
       - run:
