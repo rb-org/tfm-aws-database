@@ -7,15 +7,17 @@ module "flaskapi_rds" {
   db_parameter_group_family = "mysql5.7"
   db_instance               = "db.t2.medium"
   db_password               = "${var.mysql_rds_password}"
+  storage_encrypted         = false
 
   # Remote state references
-  db_subnet_ids   = "${data.terraform_remote_state.flaskapi_base.database_subnets_ids}"
-  db_subnet_group = "${data.terraform_remote_state.flaskapi_base.database_subnet_group}"
-  vpc_id          = "${data.terraform_remote_state.flaskapi_base.vpc_id}"
-
-  # ssh_sg_id        = "${data.terraform_remote_state.flask_api_base.ssh_sg_id}"
+  db_subnet_ids    = "${data.terraform_remote_state.flaskapi_base.database_subnets_ids}"
+  db_subnet_group  = "${data.terraform_remote_state.flaskapi_base.database_subnet_group}"
+  vpc_id           = "${data.terraform_remote_state.flaskapi_base.vpc_id}"
   db_clients_sg_id = "${data.terraform_remote_state.flaskapi_base.db_clients_sg_id}"
 
   # Tags
   default_tags = "${var.default_tags}"
+
+  # Logging
+  enabled_cloudwatch_logs_exports = "${var.mysql_log_exports}"
 }

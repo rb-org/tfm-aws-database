@@ -50,7 +50,7 @@ variable "iam_database_authentication_enabled" {
 }
 
 variable "create_db_option_group" {
-  default = true
+  default = false
 }
 
 variable "backup_retention_period" {
@@ -84,13 +84,17 @@ variable "deletion_protection" {
   default = true
 }
 
-variable "enabled_cloudwatch_logs_exports" {
-  description = "Valid values  alert, audit, error, general, listener, slowquery, trace"
-  default     = ["alert", "error"]
-}
-
 variable "db_parameter_group_family" {}
 
 variable "default_tags" {
   type = "map"
+}
+
+variable "enabled_cloudwatch_logs_exports" {
+  type = "list"
+}
+
+variable "storage_encrypted" {
+  description = "Encrypt database at rest"
+  default     = true
 }

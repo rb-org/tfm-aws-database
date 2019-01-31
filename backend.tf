@@ -7,7 +7,7 @@ terraform {
     key                     = "database.tfstate"
     encrypt                 = "true"
     shared_credentials_file = "~/.aws/credentials"
-    profile                 = "xyz-auto"
+    profile                 = "default"
   }
 }
 

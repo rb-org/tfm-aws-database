@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: hashicorp/terraform:light
     environment: 
-      WKSPC: "default"
+      WKSPC: "x200"
     steps:
       - checkout
       - run:
@@ -32,12 +32,12 @@ jobs:
             .circleci/validate.sh
       - run: mkdir -p plans
       - run: terraform workspace select $WKSPC || terraform workspace new $WKSPC
-      - run: terraform plan -var account_id=$aws_acc_id -input=false
+      - run: terraform plan -var account_id=$aws_acc_id -var mysql_rds_password=$mysql_rds_password -input=false
   plan:
     docker:
       - image: hashicorp/terraform:light
     environment: 
-      WKSPC: "default"
+      WKSPC: "x200"
     steps:
       - checkout
       - run:
@@ -59,7 +59,7 @@ jobs:
             .circleci/validate.sh
       - run: mkdir -p plans
       - run: terraform workspace select $WKSPC || terraform workspace new $WKSPC
-      - run: terraform plan -var account_id=$aws_acc_id -input=false -out=plans/tfm.plan
+      - run: terraform plan -var account_id=$aws_acc_id -var mysql_rds_password=$mysql_rds_password -input=false -out=plans/tfm.plan
       - persist_to_workspace:
           root: plans
           paths:
@@ -68,7 +68,7 @@ jobs:
     docker:
       - image: hashicorp/terraform:light
     environment: 
-      WKSPC: "default"
+      WKSPC: "x200"
     steps:
       - checkout
       - run:
