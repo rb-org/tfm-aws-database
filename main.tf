@@ -26,6 +26,7 @@ module "flaskapi_rds" {
 module "ssm" {
   source = "./ssm"
 
-  rds_endpoint    = "${module.flaskapi_rds.flaskapi_rds_instance_endpoint}"
-  db_adm_username = "${terraform.workspace}rdsadmin"
+  rds_endpoint            = "${module.flaskapi_rds.flaskapi_rds_instance_endpoint}"
+  db_adm_username         = "${terraform.workspace}rdsadmin"
+  create_ssm_service_role = "${var.create_ssm_service_role}"
 }
