@@ -35,6 +35,7 @@ variable "db_port" {
 }
 
 variable "db_password" {}
+variable "db_adm_username" {}
 
 variable "apply_immediately" {
   default = true

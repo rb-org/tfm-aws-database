@@ -1,6 +1,6 @@
 locals {
   rds_name    = "${terraform.workspace}-rds-${var.db_engine}"
-  db_username = "${terraform.workspace}rdsadmin"
+  db_username = "${var.db_adm_username == "" ? "${terraform.workspace}rdsadmin" : var.db_adm_username}"
 
   db_subnet_group_name = "${
     (var.create_db_subnet_group == true || var.db_subnet_group == "") ? "${terraform.workspace}-rds-subnet-grp" :
