@@ -34,3 +34,8 @@ variable "mssql_log_exports" {
   description = "Valid values  agent, dump, error, trace"
   default     = ["agent", "error"]
 }
+
+# SSM 
+variable "create_ssm_service_role" {
+  default = false
+}
